@@ -1,0 +1,659 @@
+*{
+    margin: 0;
+    padding: 0;
+    /*Ver si pongo box-sizing: border-box;*/
+}
+
+body{
+    /*background-color: rgba(26, 127, 251, 0.593);*/
+    /*probar en negro*/
+    background-color: rgba(0, 0, 0, 1);
+   
+    
+}
+
+/*------BARRA DE NAVEGACIÓN------*/
+
+/*Si modifico este heigth debo modificar como se ve la barra el pantalla de celular*/
+nav{
+    position: fixed;
+    z-index: 10;
+    left:0;
+    right: 0;
+    top: 0;
+    padding: 0 20px;
+    height: 10vh;/*Esta es una de las tres alturas que suma 100vh en total*/
+    background: #1e5799; /* Old browsers */
+    background: -moz-linear-gradient(top, #1e5799 0%, #2989d8 37%, #207cca 57%, #7db9e8 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #1e5799 0%,#2989d8 37%,#207cca 57%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #1e5799 0%,#2989d8 37%,#207cca 57%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+}
+
+/*esto está repetido para probar con color negro sin perder el gradient anterior, después decido*/
+nav{
+    background: black; /* Old browsers */
+    background: -moz-linear-gradient(top,black, #7db9e8 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, black,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, black 0%,black 47%, rgb(30, 9, 8) 87%, rgb(33, 1, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    
+}
+nav .logo{
+    float: left;
+    width: 4vw;/*Esto logra que no se deforme el logo*/
+    height: 8vh;
+    line-height: 30px;
+    display: flex;
+    margin-top: 3px;
+    border-radius: 50%;
+}
+
+nav .links {
+    float: right;
+    padding: 0;
+    margin: 0;
+    /*Con este ancho arreglo el problema de la superposición en sobre mi*/
+    width: 80vw;
+    height: 10vh;
+    /*Esta parte me sirve para ubicar los li*/
+    display: flex;
+    justify-content:stretch;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+nav .links li{
+    list-style: none;
+    justify-content: center;
+}
+
+nav .links a{
+    display: block;
+    padding: 1em;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    user-select: none;/*esto imposibilita que se pueda seleccionar los enlaces como para copiarlos*/
+    transition: all .5s;/*(A)esta es igual al hover, pero ahora lo hace para "volver"*/
+}
+
+nav .links a:hover{
+    color: #566a78;
+    font-size: 1.1rem;
+    /* Alan dijo que esto solo en el elemento . SACARLO. transition: all .5s; esta es la misma que está arriba en (A)*/
+}
+
+
+/*------Inhabilito el link a la propia page en cada page------*/
+
+#bloqueoInicio{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#bloqueoContacto{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#bloqueoPortafolio{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#bloqueoHerramientas{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+#bloqueoSobreMi{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+
+/*------Esto es el icono de despliegue en celular (Mi Hamburguesa con CSS)------*/
+#nav-toggle{
+    position: absolute;
+    top: -100px;
+}
+
+nav .icon{
+    display: none;
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+nav .icon .line{
+    width: 30px;
+    height: 5px;
+    background-color: #0d4672;
+    margin: 5px;
+    border-radius: 3px;
+    transition: all .3s ease-in-out;
+    /*Esto le pone una sombra que si no la saco se mueve con las lineas al formar la X*/
+    box-shadow: 10px 10px #566a78;
+}
+
+
+@media screen and (max-width: 780px) {
+    nav .logo{
+        float: none;
+        width: auto;/*Misma solución que pantalla completa, queda fijo pero me gusta más que los movimientos que hace con % o px*/
+        justify-content: start;
+    }
+
+    nav .links{
+        float: none;
+        position: fixed;
+        z-index: 9;/*yo no sé si esto está realmente funcionando*/
+        /*Esto es la pantalla traslucida que aparece, me gusta entera así*/
+        /*Igual le voy a dejar esos márgenes porque quizás sea bueno que se note que es distinta a la pantalla trasera*/
+        left: 50px;/*Si lo pongo en 0 ocupa todo el ancho de la ventana*/
+        right: 50px;/*Si lo pongo en 0 ocupa todo el ancho de la ventana*/
+        top: 70px;/*Este separa la ventana emergente del nav...así me gusta*/
+        bottom: 100%;/*Ojo que esto es lo que hace desaparecer la pantalla al cerrarla*/
+        width: auto;
+        height: auto;
+        flex-direction: column;
+        justify-content: flex-start;
+        background-color: rgba(0,0,0,.7);
+        overflow: hidden;
+        transition: all 2s ease-in-out;/*dos segundos para que aparezca la pantalla...parece una eternidad jajaja*/
+    }
+
+    nav .links a{
+        font-size: 1.5rem;
+    }
+
+    nav .links a:hover{
+        font-size: 1.8rem;
+    }
+
+    nav .icon{
+        display: block;
+    }
+
+    nav :checked ~ .links{
+        bottom: 0;
+    }
+
+    /*esto es lo que mueve las barras y forma una cruz*/
+    /*Si agrego la línea 2 se hace como una estrella*/
+    nav :checked ~ .icon .line:nth-child(1){
+        transform: translateY(10px) rotate(225deg);
+    }
+    nav :checked ~ .icon .line:nth-child(3){
+        transform: translateY(-10px) rotate(-225deg);
+    }
+    /*Me parece interesante dejarlo porque es diferente a todas las cruces*/
+    nav :checked ~ .icon .line:nth-child(2){
+        opacity: 0.5;
+        width: 18px;
+        transform: translateX(6px);
+    }
+
+    /*Esto saca la sombra de las lineas del sector nav .icon .line*/
+    nav :checked ~ .icon .line{
+        box-shadow: none; /*si quiero ver las líneas darle un color acá y listo*/
+    }
+}
+
+/*::::::Hasta acá creo está terminada la barra de navegación:::::*/
+
+/*Solo habría que ver si tiene sentido agrandar los link en desktop y despues achicarlos un poco en tablet...en celular ya esta listo*/
+
+/*::::::------VER------::::::ARRIBA El tema responsive::::::------*/
+
+
+/*línea 1 a 200 revisado (16/05/23)*/
+
+/*........PIE DE PAGINA (FOOTER)..........*/
+
+footer{
+    background: #7db9e8 ; /* Old browsers */
+    background: -moz-linear-gradient(top, #7db9e8  0%, #2989d8 37%, #207cca 57%,#1e5799 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #7db9e8  0%, #2989d8 37%, #207cca 57%,#1e5799 100%); /* Chrome10-25,Safari5.1-6 */
+    /*cambiando acá el bottom por un top logré dejar la parte más clara arriba y hace espejo con el nav*/
+    background: linear-gradient(to top, #1e5799 0%,#2989d8 37%,#207cca 57%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#7db9e8',GradientType=0 ); /* IE6-9 */
+}
+
+/*esto está repetido para probar con color negro sin perder el gradient anterior, después decido*/
+footer{
+    background: black; /* Old browsers */
+    background: -moz-linear-gradient(top, black 0%,black 57%,black 87%,#7db9e8 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, black 0%,black 57%,black 87%,#7db9e8 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to top, rgb(33, 1, 1) 0%,black 30%,black 65%, rgb(33, 1, 1) 85%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    
+}
+
+.pie-pagina{
+    width: 100% ;
+    /* background-color: rgb(11, 51, 86); */
+    height: 10vh;
+    display: grid;
+    position: fixed;
+    
+}
+
+.pie-pagina .grupo1{
+    width: 100vw;
+    height: 6vh;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+    /*Estas cosas las pongo para poder usarlas luego*/
+    /*SACABLE  padding: 0px 0px; */
+}
+
+.pie-pagina .grupo1 .box h2{
+    color: rgb(238, 226, 226);
+    font-size: 1rem;
+    text-align: center;
+}
+
+.pie-pagina .grupo1 .box p{
+    color: rgb(175, 215, 215);
+    text-align: center;
+}
+
+.pie-pagina .grupo1 .box .redsocial{
+    /* background-color: #970707; BORRAR Luego, está para ver bien el espacio de las redes*/
+    line-height: 28px;
+    margin-top: 8px;/*Esto lo use para centrar los i*/
+    display: flex;
+    /*Ojo si quiero agregar algo; porque puse columna reversa aca*/
+    flex-direction: row-reverse;
+    margin-right: 45px;
+
+}
+.pie-pagina .grupo1 .box .redsocial a{
+    display: inline-block;
+    text-decoration: none;
+    width: 40px;
+    height: 28px;
+    line-height: auto;
+    color: white;/*Este es el color de los iconos Font*/
+    margin-right: 20px;
+    background-color: rgb(102, 129, 152, .4);/*lo pongo con opacidad porque sino me tapa el icono*/
+    text-align: center;
+    border-radius: 15px;
+    transition: all 0.2s ease;
+    
+}
+/*
+Esto es el fondo chico tras el i
+.pie-pagina .grupo1 .box .redsocial a i{
+/* background-color: #970707; 
+}
+*/
+.pie-pagina .grupo1 .box .redsocial a:hover{
+    color: rgba(194, 6, 50, 0.6);/*no queda feo pero también podría ser negro o gris*/
+}
+
+.pie-pagina .grupo1 .box .redsocial h2{
+    margin-right: 25px;
+}
+
+
+/*::::::::::FOOTER::::::::::::::Prueba responsive::::*/
+
+
+
+@media screen and (max-width: 700px){
+
+    .pie-pagina .grupo1{
+        display: flex;       
+        line-height: 10vh;
+        text-align: center;
+        width: 50vw;
+        justify-content: center;
+    }   
+        
+    .pie-pagina .grupo1 .box .redsocial a{
+        width: 30px;
+        height: 27px;
+        margin-right: 5 px;
+    }
+
+    .pie-pagina .grupo2{
+        display: flex;
+        width: 50vw;
+        justify-content: center;
+        width: 100vw;
+    }
+
+        /*Estoy ocultando esta caja para que queden las redes solamente*/
+    .ocultar{
+        visibility: hidden;
+    }
+    
+}
+
+/* Quizas podría dejar las redes arriba y la parte del @abajo de eso...tendría que probar (12/05/23)*/
+/*::::::::Creo que responsive NAV y FOOTER está 28/04/23 ::::::::::*/
+
+
+
+
+
+/*::::::------SECTION (No BORRAR!)------::::::*/
+/*----Estas dos clases (section y container) son las que me dejan ordenar más fácil cada page, no pueden faltar en las pages!-----*/
+
+.container {
+    display: flex;
+    box-sizing: border-box;
+    height: auto;
+    
+}
+
+section {/*acá podría usar un calc en el margen sueprior y el alto...creo sería bueno*/
+    margin-top: 10vh;/* por ejemplo margen superior = altura de nav +0*/
+    height: 80vh;/*la altura de la section sería el 100% - (altura nav + altura footer)*/
+    /* background-image: url(../IMG/Baul.webp); */
+    /*background-size: cover;
+    background-position: 50% 50%;
+    background-attachment: fixed; */
+    /* transform: scaleZ(3) rotateX(50deg); */
+}
+
+
+/*------I  N  I  C  I  O----------*/
+
+.contenedorImgTxt {
+    display: grid;
+    grid-template-columns: 25% 75%;
+}
+
+.mensaje{
+    display: flex;
+}
+
+.mensaje img{
+    height: 40vh;
+    margin-top: 10vh;
+    width:auto;/*Si pongo 100% la cara se deforma, con esto no*/
+    margin-left:5vw; 
+    margin-right: 5vw;
+}
+
+
+section .contenedorImgTxt p, h1, h3{
+    color: white;
+}
+
+section p{
+    text-align: center;/*centra la frase*/
+    padding: 45px 70px;
+    margin: 5px 15px;
+    display: flex;
+    
+    /*SACAR?? justify-content: flex-end; */
+    /* SACAR ?? height:min-content; */
+}
+
+.cita {
+    color: rgb(175, 215, 215);
+    font-size: 1.1rem;
+}
+
+section h1{
+    font-size: 3.5rem;
+    text-align: center;
+}
+
+section h3{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.container section p{
+    padding: 10px 0px;
+    flex-direction: column;
+}
+
+.inicioTextos{
+    margin-top: 10vh;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    font-size: 1.2rem;
+}
+
+.inicioTextos h1{
+    font-size: 4.5rem;
+}
+
+.inicioTextos h3{
+    font-size: 2rem;
+}
+
+.inicioTextos p{
+    font-size: 1.2rem;
+    line-height: 25px;
+} 
+
+.inicioTextos h1{
+    font-size: 4.5rem;
+}
+
+.inicioTextos h3{
+    font-size: 2rem;
+}
+
+.inicioTextos p{
+    font-size: 1.2rem;
+    line-height: 25px;
+}
+
+/*::::::Prueba responsive::::::::*/
+
+@media screen and (max-width: 760px) {
+
+    .container section p{
+        flex-direction: column;
+    }
+
+    .contenedorImgTxt {
+        grid-template-columns: auto;
+    }
+
+    .mensaje{
+        width: 100vw;
+    }
+
+    .mensaje img{  
+        margin-top: -0vh;
+        width: auto;
+        height: 30vh;
+        margin-left:auto; 
+        margin-right: auto;
+    }
+
+    .inicioTextos{
+        height: auto;
+        margin-right: 3vh;
+    }
+    .descript{
+        /*le doy esta altura porque sino el párrafo se ve mal
+        así hecho permite un scroll si me paso escribiendo
+        de lo contrario podría bajar el tamaño y que no aparezca el scroll*/
+        margin-bottom: 10vh;
+    }
+}
+
+@media screen and  (min-width: 761px) and (max-width: 1000px){ 
+
+    .container section p{
+        flex-direction: column;
+    }
+    
+    .contenedorImgTxt {
+        grid-template-columns: 40% 60%;
+    }
+
+    .mensaje{
+        width: 40vw;
+    }
+
+    .mensaje img{  
+        margin-top: 10vh;
+        width:auto;
+        height: 40vh;
+        margin-left:5vw; 
+        margin-right: 5vw;
+    }
+
+    .inicioTextos{
+        margin-top: 10vh;
+        margin-right: 5vw;
+        margin-left: 5vw;
+        font-size: 1.2rem;
+    }
+}
+
+/*::::::::Creo que responsive SECTION está 30/04/23 ::::::::::*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*-----------Estilos para página Herramientas -------------*/
+
+/*sacar*/
+.Herr{
+    background-color: #fff;
+}
+
+.contenedorH {
+    width: 90vw;
+    margin: 0 auto;
+    height: 50vh;/*si cambio esto tengo que cambiar los line-height*/
+
+}
+
+#herramientas {/*creo que esto lo puedo sacar*/
+    background-color: #fff;
+}
+.bloque{/*creo que esto lo puedo sacar*/
+    background-color: #fff;
+    
+}
+.bloque h1 {
+    margin: 0 3vw;
+    color: #e7eaed;
+    /*Esta es la altura fundamental para la imagen*/
+    line-height: 50vh;
+    text-align: center;
+    font-size: 3em;
+    text-shadow: 3px 3px red;
+}
+
+
+.bloque h2 {
+    margin-bottom: 2vh;
+    font-size: 2em;
+    text-align: center;
+    background-color: #e7eaed;
+}
+
+/*creo que para ppoder separa del bottom
+debería dar otra clase al último parrafo
+para que quede separado de la imagen*/
+
+.bloque p {
+    margin: 3vh 2vh;
+    font-size: 1.3em;
+    background-color: #fff;
+}
+
+
+/*::::---VER SAS ---::::*/
+/*Interesante en SAS crear una variable para size-position-attachment*/
+.bloque.imagen1 {
+
+    background-image: url(../IMG/fondoWeb.jpeg);
+    background-size: cover; /*esto hace que cubra todo sin repetir*/
+    background-position: 50% 50%; /*Esto centra la imágen*/
+    /*Esto es lo que deja fija la imágen y hace el efecto visual*/
+    background-attachment: fixed;
+}
+
+.bloque.imagen2 {
+    background-image: url(../IMG/SOLAR1.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+}
+
+.bloque.imagen3 {
+    background-image: url(../IMG/SOLAR2.jpg);
+    background-size: cover;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+}
+
+
+
+
+
+/*:::::::::PAGE CONTACTO::::::::::*/
+
+
+.contacto-group{
+width: 90vw;
+
+box-sizing: border-box;
+margin-top: 30px;
+padding: 0 20px;
+}
+
+.form-contact{
+    width: 90vw;
+}
+
+.form-control{
+    width: 80%;
+    padding: .8rem;/*esto me define el alto de los campos*/
+    margin: .6rem .8rem;/*esto es margen entre los elementos*/
+    display: block;
+    font-size: 1rem;/*tamaño de la letra dentro de los campos*/
+    outline: red solid 2px;/*línea de forde de cada campo*/
+    border-radius: 10px;    
+    border: 5px solid #c7c7c7/*borde interno precio al rojo*/
+}
+
+.send-btn{
+    display: block;
+    font-size: 1rem;
+    text-transform: uppercase;
+    background: pink;/*cambiar el color*/
+    color: #8e0b0b;
+    border: none;
+    padding: .7rem 1.5rem;
+    margin: .6rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .5 ease;
+    margin-bottom: 10px;
+}
+
+.send-btn:hover{
+    color: #ccdae4;/*modifica el color de la letra en el botón*/
+    background: #0d4672;/*modifica el color del boton al cursor*/
+}
+

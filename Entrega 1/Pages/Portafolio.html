@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio</title>
+
+    <!-- Esto es para incluir Boostrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+
+    <!-- Esto es la relación a mi página de estilos SIEMPRE DEBE ESTAR DEBAJO DE BOOTSTRAP -->
+    <link rel="stylesheet" href="../CSS/estilo.css">
+
+
+    <!-- Esto es para usar los íconos en la página -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+
+
+
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <input type="checkbox" name="" id="nav-toggle">
+            <div class="logo">
+                <img class="logo" src="../IMG/Logo NM.png" alt="Logo Nicolas Melgar">
+            </div>
+
+            <!-- Falta hacer y  linkear las páginas -->
+            <ul class="links">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../Pages/Portafolio.html" target="_blank" id="bloqueoPortafolio">Portafolio</a></li>
+                <li><a href="../Pages/SobreMi.html" target="_blank">Sobre mi</a></li>
+                <!-- <li><a href="Pages/Futuro.html">Futuro</a></li> -->
+                <li><a href="../Pages/Herramientas.html" target="_blank">Herramientas</a></li>
+                <li><a href="../Pages/Contacto.html" target="_blank">Contacto</a></li>
+                <!-- El apartado de contacto lo podría eliminar -->
+            </ul>
+            <!-- Esto es un boton hecho no sacado de FontAw -->
+            <label for="nav-toggle" class="icon">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </label>
+        </nav>
+    </header>
+
+<!-- Ojo porque la diagramación de este div es fundamental para que no se me descompaginen todas las otras pág. Tiene que estar en todas las pag -->
+
+    <div class="container">
+        <!-- LA ALTURA DE STYLE DEBE SER LA QUE NECESITO PARA QUE QUEDE EL NAV Y FOOTER FIJOS -->
+        <section style = "height: 80vh"> 
+  
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card h-80">
+                        <img  src="../IMG/coderhouse logo.webp" class="card-img-top" alt="Portafolio 1" style="height: 50vh;">
+                        <div class="card-body" >
+                            <h5 class="card-title">Trabajo final</h5>
+                            <p class="card-text">Aquí podría tener algunas variantes del sitio original? O bien podría sumar cosas que no use y me gustaron.</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Ver trabajo</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-80">
+                        <img src="../IMG/openbootcamp 2.jpg" class="card-img-top" alt="Portafolio 2" style="height: 50vh;">
+                        <div class="card-body">
+                            <h5 class="card-title">Formularios</h5>
+                            <p class="card-text">Aquí podría poner un acceso a formularios hechos por mi. De lo contrario tendría sentido una landing o algo así</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Ver trabajo</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="../IMG/FCC logo.jpg" class="card-img-top" alt="Portafolio 3" style="height: 50vh;">
+                        <div class="card-body">
+                            <h5 class="card-title">LaandingPage</h5>
+                            <p class="card-text">Aquí también se podría sumar el acceso a Git y linkear el acceso</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-body-secondary">Ver trabajo</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+    
+    
+    
+    
+        </section>
+    </div>
+
+
+<!-- <div class="container">
+        <section>
+    
+<img src="https://lh4.googleusercontent.com/Umu6AiL4PMdVugSMF119gGc2aR99OCXoGUqxN0i2KMgsEd3spC7hKjQzqMygPSKzpnSx-M_-K106uahSuc5lASgl7P65UffLQq1hNTclxiecgSP8xQ31yuES7QXLpPDKFOVLFUd4MucSSVuhOdbVG62TAg=s2048" alt="">
+        </section>
+    </div> -->
+
+    <footer class="pie-pagina">
+        <div class="grupo1">
+            <div class="box ocultar">
+                <h2>MEMENTUM</h2>
+                <!-- <h2>QUORUM</h2> -->
+                <!-- <h2>MOMENTUM</h2> -->
+                <!-- <h2>RES NON VERBA</h2> -->
+                <P>@Copy 2023 <b>NM</b> - Todos los derechos reservados</P>
+            </div>
+            <div class="box">
+                <div class="redsocial">
+                    <!-- <a href="#"><i class="fab fa-facebook"></i></a> -->
+                    <a href="https://www.linkedin.com/in/nicol%C3%A1s-melgar-6b9960270/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/NicolasMelgar" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/@nicolasmelgar5088/about" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <h2>Mis Redes</h2>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+</body>
+
+</html>

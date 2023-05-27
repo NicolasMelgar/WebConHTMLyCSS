@@ -1,0 +1,43 @@
+/* COn esto logro que queden todas juntas en responsive como si fueran un fondo del nav....interesante
+.flexbox1 {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.flexbox1 img {
+    flex-direction: column;
+    width: 20%;
+    flex-flow: column wrap;
+}
+body{
+    display: flex;
+    justify-content: center;
+}
+*/
+
+/*De este modo logro que se hagan responsive con ancho fijo*/
+
+.flexbox1 {
+    display: flex;
+    justify-content: center;
+    
+}
+.flex1 {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.flexbox1 img {
+    display: flex;
+    width: 260px;
+    height: auto;
+    margin: 10px 10px;
+  
+}
+
+.helga{
+    -webkit-box-reflect: below 2px;
+    -webkit-linear-gradient: (color-stop(60%, transparent), from(transparent), to (white));
+    
+}
+
